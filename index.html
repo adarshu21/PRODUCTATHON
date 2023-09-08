@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voice-Controlled IoT</title>
+</head>
+<body>
+    <h1>Voice-Controlled IoT</h1>
+    <form method="post">
+        <input type="submit" value="Get Temperature">
+    </form>
+    <div id="temperature"></div>
+    <script>
+        document.querySelector('form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const response = await fetch('/', {
+                method: 'POST',
+            });
+            const data = await response.json();
+            document.querySelector('#temperature').textContent = `Temperature: ${data.temperature}`;
+        });
+    </script>
+</body>
+</html>
